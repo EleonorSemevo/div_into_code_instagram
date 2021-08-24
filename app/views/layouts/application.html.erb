@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SocialApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <div class="container-fluid main-header main">
+    <% if logged_in? %>
+      <div class="row bg-white main-header" style="width: 100%; position: fixed;">
+        <div class="col-md-4">
+          <ul class="nav ">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"><%= image_tag("facebook.png", class: 'facebbok') %></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                </form>
+              </a>
+            </li>
+            <% if logged_in? %>
+              <li class="nav-item">
+                <%= link_to "Profile", user_path(current_user.id), class: "nav-link active" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Logout", session_path(current_user.id), method: :delete, class: "nav-link active" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Sign up", new_user_path, class: "nav-link active" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Login", new_session_path, class: "nav-link active" %>
+              </li>
+            <% end %>
+
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <%= image_tag("home.png") %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <%= image_tag("amis.png") %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <%= image_tag("watch.png") %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                <%= image_tag("groupes.png") %>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                <%= image_tag("gaming.png") %>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <%= image_tag("profil.png") %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <%= image_tag("menu.png") %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <%= image_tag("messenger.png") %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                <%= image_tag("notifications.png") %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                <%= image_tag("compte.png") %>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <div class="row principal">
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-4">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
+        <% unless logged_in? %>
+          <%= link_to "Sign up", new_user_path, class: "account-button" %>
+          <%= link_to "Login", new_session_path, class: "account-button" %>
+        <% end %>
+        <%= yield %>
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </div>
+
+
+  </div>
+  <footer class="footer container-fluid">
+    <p>My footer</p>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form_field{
+  color: blue;
+}
+.field{
+  //display: table-cell;
+}
+
+.form-size{
+  width: 90%;
+
+  justify-content: center;
+  margin: auto;
+
+  padding: 0.5%;
+  background-color: white;
+  border-radius: 10px;
+  elevation: higher;
+}
+
+.enregistrer{
+  width: 100%;
+}
+
+body{
+  background-color: #ECF3FF;
+          //#f7f7f5;
+}
+.centrer-element{
+  text-align: center;
+}
+
+.centrer-element a, .link a {
+  color: blue;
+}
+
+.centrer-element a:hover{
+  background-color: #337ab7;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+
+.new-post{
+  width: 50%;
+}
+.account-button{
+  padding: 20px;
+  font-size: 1.5rem;
+  color: blue;
+  margin: 1rem;
+
+}
+
+.account-button:hover{
+  background-color: #337ab7;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+
+}
+
+.confirm-div{
+  margin-top: 2rem;
+}
+
+ul{
+  width: 100%;
+}
+
+body{
+  margin: 0;
+}
+div{
+  padding: 0;
+}
+
+.main-header{
+  padding: 0;
+  margin: 0;
+}
+.facebbok{
+  width: 40px;
+}
+
+footer {
+  background-color: wheat;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: table;
+}
+
+footer p {
+  display: table-cell;
+  font-size: 1rem;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.principal{
+  margin-bottom: 100px;
+}

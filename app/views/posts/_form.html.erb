@@ -1,0 +1,31 @@
+<%= form_with(model: post, local: true, url:choose_new_or_edit) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="new-post">
+   <div class="field">
+     <%= form.label :content %>
+     <%= form.text_area :content, class: "form_field form-control" %>
+   </div>
+
+   <div class="field">
+     <%= form.label :image %>
+     <%= image_tag(post.image.url) if  post.image.url %>
+     <%= form.file_field :image,  class: "btn btn-success" %>
+     <%= form.hidden_field :image_cache %>
+   </div>
+
+   <div class="actions">
+     <%= form.submit  'Enrégistrer post', class: "btn btn-primary enregistrer"%>
+   </div>
+ </div>
+<% end %>

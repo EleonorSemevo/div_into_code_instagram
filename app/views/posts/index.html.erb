@@ -1,0 +1,24 @@
+<h1>Posts</h1>
+<div>
+
+  <% @posts.each do |post| %>
+    <p class="badge bg-secondary" style="margin-top: 5px;">
+     User: <%= post.user.name %>
+    </p>
+    <p style="text-align: justify;">
+      <%= post.content %>
+    </p>
+    <p>
+      <%= image_tag post.image.url if post.image.url %>
+    </p>
+    <% if current_user.id == post.user_id %>
+      <%= link_to 'Show', post, class: "btn btn-info", style: "color: white;" %>
+      <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary" %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", style: "color: white;" %>
+    <% end %>
+  <%end %>
+
+  <div style="margin-top: 1.5rem;">
+    <%= link_to 'New Post', new_post_path, class: "btn btn-success", style: "color: white;" %>
+  </div>
+</div>

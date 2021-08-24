@@ -1,0 +1,27 @@
+<%= form_with(model: @post, local: true) do |form| %>
+
+  <div class="field confirm-div">
+    Content:
+   <p><%= form.hidden_field :content %>
+   </p>
+    <%= @post.content %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :image_cache %>
+    <p>Image:</p>
+    <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+  </div>
+
+  <div class="actions">
+    <%= form.hidden_field :content %>
+    <%= form.submit  'Confirmez post', class: "btn btn-success"%>
+  </div>
+<% end %>
+
+<%= form_with(model:@post, url:new_post_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :content %>
+
+  <%= form.submit 'back' , name:'back', class: "btn btn-info"%>
+<% end %>
